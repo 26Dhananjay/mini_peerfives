@@ -1,0 +1,24 @@
+<h1>Reward History</h1>
+<p>Rewards Balance: <%= @user.reward_balance %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Date_Time</th>
+      <th>Rewards_Received</th>
+      <th>User_Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reward_histories.each_with_index do |history, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= history.datetime.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td><%= history.points %></td>
+        <td><%= history.giver.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back to User Details', root_path(@user) %>

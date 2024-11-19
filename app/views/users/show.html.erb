@@ -1,0 +1,21 @@
+<h1>View User</h1>
+<%= form_with model: @user, local: true, url: new_path(@user), method: :get do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.submit 'Save' %>
+  </div>
+<% end %>
+
+<div>
+  <h2>Balances</h2>
+  <p>P5 Balance: <%= @user.p5_balance %></p>
+  <%= link_to 'View P5 History', p5_history_path(@user) %>
+</div>
+<div>
+  <p>Reward Balance: <%= @user.reward_balance %></p>
+  <%= link_to 'View Reward History', rewards_history_path(@user) %>
+</div>
+<%= link_to 'Back to Users List', root_path %>

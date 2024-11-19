@@ -1,0 +1,24 @@
+<h1>New Reward</h1>
+<p>Your P5 Balance: <%= @user.p5_balance %></p>
+
+<%= form_with url: reward_histories_path, local: true do |form| %>
+  <%= form.hidden_field :giver_id, value: @user.id %>
+
+  <div>
+    <%= form.label :receiver_id, 'Select User' %>
+    <%= form.select :receiver_id, options_from_collection_for_select(@other_users, :id, :name), prompt: 'Choose a user' %>
+  </div>
+
+  <div>
+    <%= form.label :points, 'Points' %>
+    <%= form.number_field :points, min: 1, max: 100 %>
+  </div>
+  <div data-alert class="alert-box text-danger">
+    <%= alert&&alert.present? %>
+    <a href="#" class="close">&times;</a>
+  </div>
+  <div>
+    <%= form.submit 'Submit', disabled: @user.p5_balance.zero? %>
+    <%= link_to 'Cancel', root_path(@user) %>
+  </div>
+<% end %>

@@ -2,13 +2,18 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'users#index'
   get '/new', to: 'users#new' 
-  resources :users do
-    member do
-      get 'p5', to: 'reward_histories#index_p5'
-      get 'rewards', to: 'reward_histories#index_rewards'
-      get 'rewards/new', to: 'reward_histories#new'
-    end
-  end
+  get '/:id', to: 'users#show'
+  get '/:id/p5', to: 'reward_histories#index_p5', :as => "p5_history"
+  get '/:id/rewards', to: 'reward_histories#index_rewards', :as => "rewards_history"
+  get '/:id/rewards/new', to: 'reward_histories#new', :as => "new_rewards"
+  get '/:id', to: 'users#edit', :as => "edit_user"
+  # resources :users do
+  #   member do
+  #     get 'p5', to: 'reward_histories#index_p5'
+  #     get 'rewards', to: 'reward_histories#index_rewards'
+  #     get 'rewards/new', to: 'reward_histories#new'
+  #   end
+  # end
 
   resources :reward_histories, only: [:create, :destroy]
 

@@ -1,0 +1,29 @@
+<h1>P5 History</h1>
+<p>P5 Balance: <%= @user.p5_balance %></p>
+<%= link_to 'Create New Reward', new_rewards_path(@user) %>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Date-Time</th>
+      <th>P5_Given</th>
+      <th>To</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @p5_histories.each_with_index do |history, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= history.datetime.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td><%= history.points %></td>
+        <td><%= history.receiver.name %></td>
+        <td>
+          <%= button_to 'Delete', reward_history_path(history), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back to User Details', root_path(@user) %>
