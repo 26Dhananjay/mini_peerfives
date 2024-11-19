@@ -6,14 +6,21 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+	ruby 3.3.3 
+	rails 7.2.2
 
 * System dependencies
+	Ubuntu 20.04
 
 * Configuration
+	mysql database setup
 
 * Database creation
+	db_name= mini_peerfives_development
 
 * Database initialization
+	add the credentials in config/database.yml and run
+	rails db:create
 
 * How to run the test suite
 
