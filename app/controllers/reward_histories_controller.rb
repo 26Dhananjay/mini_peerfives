@@ -1,0 +1,2 @@
+class RewardHistoriesController < ApplicationController
+end

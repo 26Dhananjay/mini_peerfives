@@ -10,5 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 0) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_19_063523) do
+  create_table "reward_histories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "datetime", null: false
+    t.integer "points", null: false
+    t.integer "given_by", null: false
+    t.integer "given_to", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "p5_balance", default: 100
+    t.integer "reward_balance", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end
